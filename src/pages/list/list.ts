@@ -1,81 +1,27 @@
 import { Component } from '@angular/core';
+import { DetalhePage } from '../detalhe/detalhe';
 import { NavController, NavParams } from 'ionic-angular';
+import { RestProvider } from '../../providers/rest/rest';
 
 @Component({
 	selector: 'page-list',
 	templateUrl: 'list.html'
 })
 export class ListPage {
-	selectedItem: any;
-	icons: string[];
-	items: Array<{ title: string, note: string, icon: string }>;
-	categorias: Array<{ Id: Number, Titulo: string, Subtitulo: string, Enum: string }>;
 
-	constructor(public navCtrl: NavController, public navParams: NavParams) {
+	detalhePage = DetalhePage;
+	selectedItem: any;	
+	itens:Array<any>;
+	categoria: String;
+	constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider :RestProvider) {
 		// If we navigated to this page, we will have an item available as a nav param
-		this.selectedItem = navParams.get('item');
+		this.categoria = navParams.get('categoria');
+		
+		this.itens = restProvider.listarPorCategoria(this.categoria);
+		console.log(this.categoria, this.itens);
+	}
 
-		// Let's populate this page with some filler content for funzies
-		this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-			'american-football', 'boat', 'bluetooth', 'build'];
-
-		this.items = [];
-		for (let i = 1; i < 11; i++) {
-			this.items.push({
-				title: 'Item ' + i,
-				note: 'This is item #' + i,
-				icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-			});
-		}
-
-		this.categorias = [{
-			Id: 1,
-			Titulo: "Técnicas",
-			Subtitulo: "",			
-			Enum:""
-		},
-		{
-			Id: 2,
-			Titulo: "Tecnologia",
-			Subtitulo: "",
-			Enum: ""
-		},
-		{
-			Id: 1,
-			Titulo: "Linguagem",
-			Subtitulo: "",
-			Enum: ""
-		},
-		{
-			Id: 1,
-			Titulo: "Métodos",
-			Subtitulo: "",
-			Enum: ""
-		},
-		{
-			Id: 1,
-			Titulo: "Induções",
-			Subtitulo: "",
-			Enum: ""
-		},
-		{
-			Id: 1,
-			Titulo: "Aplicações",
-			Subtitulo: "",
-			Enum: ""
-		},
-		{
-			Id: 1,
-			Titulo: "Metáforas",
-			Subtitulo: "",
-			Enum: ""
-		},
-		{
-			Id: 1,
-			Titulo: "A Hipnose",
-			Subtitulo: "",
-			Enum: ""
-		}];
-
+	setDetalhe(Id) {
+		this.navCtrl.push(DetalhePage,{Id:Id} );
 	}
 }

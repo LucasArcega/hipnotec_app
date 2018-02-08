@@ -1,19 +1,16 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>List</ion-title>
-  </ion-navbar>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>{{categoria}}</ion-title>
+	</ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <button ion-item *ngFor="let categoria of categorias">
-      <ion-icon  item-start></ion-icon>
-      {{categoria.Titulo}}
-      <div class="item-note" item-end>        
-      </div>
-    </button>
-  </ion-list>  
+	<ion-list>	
+		<button (click)="setDetalhe(item.Id)" ion-item *ngFor="let item of itens">
+			<span>{{item.Titulo}}</span>
+		</button>
+	</ion-list>
 </ion-content>
