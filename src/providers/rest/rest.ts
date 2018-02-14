@@ -26,13 +26,19 @@ export class RestProvider {
         });
     }
 
-    carregarDetalhe(Id){
+    getById(Id){
         return this.all.filter(
             (elem,index,array)=>elem.Id===Id
         )[0];
     }
 
-    listarPorCategoria(categoria){        
+    search(query){
+        return this.all.filter(
+            (elem,index,array)=>elem.Conteudo.includes(query)
+        );
+    }
+
+    getByCategory(categoria){        
         return this.all.filter(
             (elem,index,array)=>elem.categoria===categoria
         );

@@ -19,7 +19,7 @@ export class DetalhePage {
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider:RestProvider) {
     
-    this.Item = restProvider.carregarDetalhe(this.navParams.get("Id"));    		    
+    this.Item = restProvider.getById(this.navParams.get("Id"));    		    
 	}  
 
 }

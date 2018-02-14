@@ -17,7 +17,7 @@ export class ListPage {
 		// If we navigated to this page, we will have an item available as a nav param
 		this.categoria = navParams.get('categoria');
 		
-		this.itens = restProvider.listarPorCategoria(this.categoria);
+		this.itens = restProvider.getByCategory(this.categoria);
 		console.log(this.categoria, this.itens);
 	}
 
