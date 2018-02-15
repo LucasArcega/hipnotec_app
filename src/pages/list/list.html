@@ -3,14 +3,14 @@
 		<button ion-button menuToggle>
 			<ion-icon name="menu"></ion-icon>
 		</button>
-		<ion-title>{{categoria}}</ion-title>
+		<ion-title>{{category}}</ion-title>
 	</ion-navbar>
 </ion-header>
 
 <ion-content>
 	<ion-list>	
 		<button (click)="setDetalhe(item.Id)" ion-item *ngFor="let item of itens">
-			<span>{{item.Titulo}}</span>
+			<span>{{item.Title}}</span>
 		</button>
 	</ion-list>
 </ion-content>

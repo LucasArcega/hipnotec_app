@@ -1,25 +1,47 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Hipnotec</ion-title>
+	</ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h3>Hipnotec</h3>
 
-  <p>Busque em seus registros pelo script desejado, ou navegue por nossas categorias.</p>
-  
-  <ion-item>
-      <ion-label color="primary" floating>Digite sua busca</ion-label>
-      <ion-input (ionChange)="triggerSearch()" [(ngModel)]="query"></ion-input>
-  </ion-item>
-<!-- 
+	<ion-row>
+		<ion-col col-12>
+			<ion-item text-wrap>
+				<p>Busque em seus registros pelo script desejado, ou navegue por nossas categorias.</p>
+				<ion-searchbar (ionCancel)="cleanSearch()" placeholder="Buscar" animated='true' (ionInput)="triggerSearch($event)"></ion-searchbar>
+			</ion-item>
+		</ion-col>
+
+		<ion-col col-s12>
+			<ion-item *ngFor="let category of searchCategories">
+				<h3>{{category}}</h3>
+				<ion-card (click)="openScript(script.Id)" *ngFor="let script of searchResult[category]">
+					<ion-card-header>
+						{{script.Title}}
+					</ion-card-header>
+				</ion-card>
+			</ion-item>
+
+		</ion-col>
+	</ion-row>
+
+	<ion-item *ngIf="recent">
+		<h4>Scripts recentes</h4>
+		<ion-card (click)="openScript(item.Id)" *ngFor="let item of recent">
+			<ion-card-header>
+				{{item.Title}}
+			</ion-card-header>
+		</ion-card>
+	</ion-item>
+	<!-- 
   <p>
     If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
   </p> -->
 
-  
+
 </ion-content>

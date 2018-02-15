@@ -10,8 +10,8 @@
       <button menuClose ion-item (click)="goRoot()">
         Home
       </button>
-      <button menuClose ion-item *ngFor="let categoria of categorias" (click)="setCategoria(categoria.Titulo)">
-        {{categoria.Titulo}}
+      <button menuClose ion-item *ngFor="let categoria of categorias" (click)="setCategoria(categoria.title)">
+        {{categoria.title}}
       </button>
     </ion-list>
   </ion-content>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { DetalhePage } from '../detalhe/detalhe';
 import { NavController, NavParams } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
+import { Detail } from '../../Models/detail';
 
 @Component({
 	selector: 'page-list',
@@ -10,15 +11,13 @@ import { RestProvider } from '../../providers/rest/rest';
 export class ListPage {
 
 	detalhePage = DetalhePage;
-	selectedItem: any;	
+	selectedItem: Detail;	
 	itens:Array<any>;
-	categoria: String;
+	category: String;
 	constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider :RestProvider) {
 		// If we navigated to this page, we will have an item available as a nav param
-		this.categoria = navParams.get('categoria');
-		
-		this.itens = restProvider.getByCategory(this.categoria);
-		console.log(this.categoria, this.itens);
+		this.category = navParams.get('categoria');		
+		this.itens = restProvider.getByCategory(this.category);
 	}
 
 	setDetalhe(Id) {

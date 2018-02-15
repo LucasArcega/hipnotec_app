@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-
 import { Injectable } from '@angular/core';
+import { Detail } from '../../Models/detail';
 
 /*
   Generated class for the RestProvider provider.
@@ -10,22 +10,43 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class RestProvider {
-    all:any;
+    all:Array<Detail>;
+    recent: Array<Detail>;
     constructor(public http: HttpClient) {        
+        this.getRecent();
     }
-    endPoint = "../../assets/json/";
+    endPoint = '../../assets/json/';
     
     getAll() {
         return new Promise(resolve => {
-            this.http.get(this.endPoint + 'db.json').subscribe(data => {
-                this.all = data;
-                resolve(data);
+            this.http.get(this.endPoint + 'db.json').subscribe((model:Array<Detail>) => {
+                this.all = model;
+                resolve(model);
             }, err => {
                 console.log(err);
             });
         });
     }
 
+    addRecent(model){        
+        this.getRecent();        
+        if(this.recent.length < 5){
+            this.recent.push(model);
+        }
+        else{
+            this.recent.shift();
+            this.recent.push(model);
+        }
+        let recentString = JSON.stringify(this.recent);
+        localStorage.setItem('recent', recentString);
+    }
+
+    getRecent(){
+        let recentList = JSON.parse(localStorage.getItem('recent'));
+        if(recentList == null)
+            recentList = new Array<Detail>();
+        this.recent = recentList;
+    }
     getById(Id){
         return this.all.filter(
             (elem,index,array)=>elem.Id===Id
@@ -34,13 +55,13 @@ export class RestProvider {
 
     search(query){
         return this.all.filter(
-            (elem,index,array)=>elem.Conteudo.includes(query)
+            (elem,index,array)=>elem.Content.includes(query)
         );
     }
 
     getByCategory(categoria){        
         return this.all.filter(
-            (elem,index,array)=>elem.categoria===categoria
+            (elem,index,array)=>elem.Category===categoria
         );
     }
 }

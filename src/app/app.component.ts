@@ -12,7 +12,7 @@ export class MyApp {
 	@ViewChild(Nav) nav: Nav;
 
 	rootPage: any = HomePage;
-	categorias: Array<{ Id: number, Titulo: string, Subtitulo: string, Enum: any }>
+	categorias: Array<{ Id: number, title: string, Subtitulo: string, Enum: any }>
 	pages: Array<{ title: string, component: any }>;
 	categoriasRest: any;
 	constructor(public platform: Platform,
@@ -24,43 +24,43 @@ export class MyApp {
 
 		this.categorias = [{
 			Id: 1,
-			Titulo: "Técnicas",
+			title: "Técnicas",
 			Subtitulo: "",
 			Enum: ""
 		},		
 		{
 			Id: 3,
-			Titulo: "Linguagem",
+			title: "Linguagem",
 			Subtitulo: "",
 			Enum: ""
 		},
 		{
 			Id: 4,
-			Titulo: "Métodos",
+			title: "Métodos",
 			Subtitulo: "",
 			Enum: ""
 		},
 		{
 			Id: 5,
-			Titulo: "Induções",
+			title: "Induções",
 			Subtitulo: "",
 			Enum: ""
 		},
 		{
 			Id: 6,
-			Titulo: "Aplicações",
+			title: "Aplicações",
 			Subtitulo: "",
 			Enum: ""
 		},
 		{
 			Id: 7,
-			Titulo: "Metáforas",
+			title: "Metáforas",
 			Subtitulo: "",
 			Enum: ""
 		},
 		{
 			Id: 8,
-			Titulo: "Hipnose",
+			title: "Hipnose",
 			Subtitulo: "",
 			Enum: ""
 		}];
