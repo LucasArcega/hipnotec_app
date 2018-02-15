@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
 import { Detail } from '../../Models/detail';
 import { DetalhePage } from '../detalhe/detalhe';
-import { empty } from 'rxjs/Observer';
+import { debounce } from 'ionic-angular/util/util';
 
 
 @Component({
@@ -28,10 +28,11 @@ export class HomePage {
         if (this.query.length == 0)
             this.cleanSearch();
     }
-    generateArray(obj) {
-        return Object.keys(obj).map((key) => { return obj[key] });
-    }
 
+	cleanRecents(){
+		localStorage.removeItem('recent');
+		this.recent = [];
+	}
 
     cleanSearch(){
         this.query = '';
@@ -46,10 +47,9 @@ export class HomePage {
         this.searchResult = this.queryResult.reduce(function (groups, item) {
             const val = item['Category']
             groups[val] = groups[val] || []
-            groups[val].push(item)
+            groups[val].push(new Detail(item));
             return groups
-        }, []);
-
+        }, {});
         this.searchCategories = Object.keys(this.searchResult);
         console.log(this.searchResult, this.searchCategories);
     }

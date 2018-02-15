@@ -28,8 +28,10 @@ export class RestProvider {
         });
     }
 
-    addRecent(model){        
-        this.getRecent();        
+    addRecent(model){
+		
+		model.Abstract = Detail.getAbstract(model.Content);
+        this.getRecent();
         if(this.recent.length < 5){
             this.recent.push(model);
         }
@@ -47,7 +49,7 @@ export class RestProvider {
             recentList = new Array<Detail>();
         this.recent = recentList;
     }
-    getById(Id){
+    getById(Id):Detail{
         return this.all.filter(
             (elem,index,array)=>elem.Id===Id
         )[0];

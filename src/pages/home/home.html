@@ -24,18 +24,25 @@
 					<ion-card-header>
 						{{script.Title}}
 					</ion-card-header>
+					<ion-card-content text-wrap>
+						{{script.Abstract}}
+					</ion-card-content>
 				</ion-card>
 			</ion-item>
 
 		</ion-col>
 	</ion-row>
 
-	<ion-item *ngIf="recent">
-		<h4>Scripts recentes</h4>
-		<ion-card (click)="openScript(item.Id)" *ngFor="let item of recent">
+	<ion-item *ngIf="recent.length>0">
+		<span text-left>Scripts recentes</span>
+		<span (click)="cleanRecents()" float-right> <ion-icon name="close"></ion-icon></span>
+		<ion-card (click)="openScript(script.Id)" *ngFor="let script of recent">
 			<ion-card-header>
-				{{item.Title}}
+				{{script.Title}}
 			</ion-card-header>
+			<ion-card-content text-wrap>
+				{{script.Abstract}}
+			</ion-card-content>
 		</ion-card>
 	</ion-item>
 	<!-- 
