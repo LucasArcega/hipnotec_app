@@ -12,11 +12,11 @@ import { Detail } from '../../Models/detail';
 export class RestProvider {
     all:Array<Detail>;
     recent: Array<Detail>;
-    constructor(public http: HttpClient) {        
+    constructor(public http: HttpClient) {
         this.getRecent();
     }
     endPoint = '../../assets/json/';
-    
+
     getAll() {
         return new Promise(resolve => {
             this.http.get(this.endPoint + 'db.json').subscribe((model:Array<Detail>) => {
@@ -29,7 +29,7 @@ export class RestProvider {
     }
 
     addRecent(model){
-		
+
 		model.Abstract = Detail.getAbstract(model.Content);
         this.getRecent();
         if(this.recent.length < 5){

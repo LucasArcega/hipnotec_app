@@ -3,6 +3,7 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
+
 import { ListPage } from '../pages/list/list';
 import { RestProvider } from '../providers/rest/rest';
 @Component({
@@ -15,13 +16,14 @@ export class MyApp {
 	categorias: Array<{ Id: number, title: string, Subtitulo: string, Enum: any }>
 	pages: Array<{ title: string, component: any }>;
 	categoriasRest: any;
+	showCategories: boolean;
 	constructor(public platform: Platform,
 		public statusBar: StatusBar,
 		public splashScreen: SplashScreen,
 		public restProvider: RestProvider) {
 		this.initializeApp();
 		this.getAll();
-
+			this.showCategories = true;
 		this.categorias = [{
 			Id: 1,
 			title: "Técnicas",

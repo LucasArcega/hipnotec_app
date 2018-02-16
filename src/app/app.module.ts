@@ -4,7 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
-
+import { SearchPage } from '../pages/search/search';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
@@ -18,7 +18,8 @@ import { RestProvider } from '../providers/rest/rest';
     MyApp,
     HomePage,
     ListPage,
-    DetalhePage
+	DetalhePage,
+	SearchPage
   ],  
   imports: [
     BrowserModule,
@@ -31,7 +32,8 @@ import { RestProvider } from '../providers/rest/rest';
     MyApp,
     HomePage,
     ListPage,
-    DetalhePage
+	DetalhePage,
+	SearchPage
   ],
   providers: [
     StatusBar,

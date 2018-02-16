@@ -1,5 +1,3 @@
-import { debounce } from "ionic-angular/util/util";
-
 export class Detail{
 
     Title:string;

@@ -14,3 +14,55 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+small{
+	font-size: 85%
+}
+.accordion{
+
+	-webkit-animation: slideUp ease-in 1;
+	animation: slideUp ease-in 1;
+	-webkit-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+	-webkit-animation-duration: 100ms;
+	animation-duration: 100ms;
+
+	
+}
+
+@-webkit-keyframes slideUp {
+	0% {
+	  -webkit-transform: translate3d(0,0,0);
+	}
+
+	100% {
+	  -webkit-transform: translate3d(0,-150%,0);
+	}
+  }
+
+
+@-webkit-keyframes slideDown {
+	0% {
+	  -webkit-transform: translate3d(0,-100%,0);
+	}
+
+	100% {
+	  -webkit-transform: translate3d(0,0,0);
+	}
+  }
+
+  .show-accordion {
+	 -webkit-animation: slideDown ease-in 1;
+	animation: slideDown ease-in 1;
+	-webkit-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+	-webkit-animation-duration: 100ms;
+	animation-duration: 100ms;
+
+  }
+
+.toolbar-title{
+	color: white;
+}
+.toolbar-background {
+	background-color: $navblue;
+}

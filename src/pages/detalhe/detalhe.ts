@@ -18,7 +18,7 @@ import { Item } from 'ionic-angular/components/item/item';
 export class DetalhePage {
 	Item: Detail;
 	constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider) {
-		debugger;
+		 
 		this.Item = restProvider.getById(this.navParams.get("Id"));
 		this.addRecent(this.Item);
 	}
