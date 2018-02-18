@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
 import { Detail } from '../../Models/detail';
-import { Item } from 'ionic-angular/components/item/item';
 /**
  * Generated class for the DetalhePage page.
  *
@@ -10,7 +9,7 @@ import { Item } from 'ionic-angular/components/item/item';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
 	selector: 'page-detalhe',
 	templateUrl: 'detalhe.html',
