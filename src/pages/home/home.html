@@ -18,9 +18,14 @@
 		</ion-col>
 
 		<ion-col *ngIf="searchResult != undefined" col-s12>
-			<h4 (click)="showAllResults()" *ngIf="searchCategories.length > 0" class="search">Resultados encontrados</h4> 
+			<h4 *ngIf="searchCategories.length > 0" class="search">
+				<span float-left>Resultados encontrados</span>
+				<a (click)="showAllResults()" float-right>Ver tudo</a>
+			</h4>
 			<ion-item *ngFor="let category of searchCategories">
-				<h3><span *ngIf="searchResult[category].length > 4">Exbindo 4 de</span> {{searchResult[category].length}} resultados em {{category}}</h3>
+				
+				<h3>
+					<span *ngIf="searchResult[category].length > 4">Exbindo 4 de</span> {{searchResult[category].length}} resultados em {{category}}</h3>
 				<ion-card (click)="openScript(script.Id)" *ngFor="let script of searchResult[category] | slice:0:4;">
 					<ion-card-header>
 						{{script.Title}}
@@ -36,7 +41,9 @@
 
 	<ion-item *ngIf="recent.length>0">
 		<span text-left>Scripts recentes</span>
-		<span (click)="cleanRecents()" float-right> <ion-icon name="close"></ion-icon></span>
+		<span (click)="cleanRecents()" float-right>
+			<ion-icon name="close"></ion-icon>
+		</span>
 		<ion-card (click)="openScript(script.Id)" *ngFor="let script of recent">
 			<ion-card-header>
 				{{script.Category}}

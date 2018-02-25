@@ -12,11 +12,33 @@ import { Detail } from '../../Models/detail';
 export class RestProvider {
     all:Array<Detail>;
     recent: Array<Detail>;
+    favorites: Array<Detail>;
     constructor(public http: HttpClient) {
         this.getRecent();
+        this.getFavorites();
     }
-    endPoint = '../../assets/json/';
+    endPoint = 'assets/json/';
 
+    addFavorite(model:Detail){
+        model.Abstract = Detail.getAbstract(model.Content);
+        this.getRecent();
+        if(this.favorites.length < 5){
+            this.favorites.push(model);
+        }
+        else{
+            this.favorites.shift();
+            this.favorites.push(model);
+        }
+        let favoritesString = JSON.stringify(this.favorites);
+        localStorage.setItem('favorites', favoritesString);
+    }
+
+    getFavorites(){
+        let favoritesList = JSON.parse(localStorage.getItem('favorites'));
+        if(favoritesList == null)
+            favoritesList = new Array<Detail>();
+        this.favorites = favoritesList;
+    }
     getAll() {
         return new Promise(resolve => {
             this.http.get(this.endPoint + 'db.json').subscribe((model:Array<Detail>) => {

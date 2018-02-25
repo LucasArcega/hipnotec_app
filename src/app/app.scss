@@ -66,3 +66,12 @@ small{
 .toolbar-background {
 	background-color: $navblue;
 }
+
+.nav-button{
+	background:transparent;
+	box-shadow: none;
+}
+
+.nav-button-right{
+	float: right
+}

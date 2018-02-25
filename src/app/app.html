@@ -10,6 +10,11 @@
 			<button menuClose ion-item (click)="goRoot()">
 				<ion-icon name="home"></ion-icon> Home
 			</button>
+			
+			<button menuClose ion-item (click)="goFavorites()">
+				<ion-icon name="star"></ion-icon> Favoritos
+			</button>
+
 			<ion-item-group>
 				<ion-item-divider (click)="showCategories = !showCategories" color="light">
 					<ion-icon name="paper"></ion-icon> Categorias
@@ -27,13 +32,10 @@
 
 
 			</ion-item>
-
-
-
 		</ion-list>
 	</ion-content>
 
 </ion-menu>
 
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
-<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+<ion-nav [root]="rootPage" persistent="true" #content swipeBackEnabled="false"></ion-nav>

@@ -60,5 +60,6 @@ export class HomePage {
 	
 	showAllResults() {
         this.navCtrl.push(SearchPage, { query: this.query });
+        this.cleanSearch();
     }
 }

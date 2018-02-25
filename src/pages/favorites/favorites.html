@@ -1,0 +1,36 @@
+<!--
+  Generated template for the FavoritesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+
+	<ion-navbar>
+		<ion-title>Meus Favoritos</ion-title>
+
+
+	</ion-navbar>
+	<button menuToggle ion-button>
+		<ion-icon name="menu"></ion-icon>
+	</button>
+</ion-header>
+
+
+<ion-content padding>
+	<ion-col *ngIf="favorites != undefined" col-s12>
+		<h4 *ngIf="searchCategories.length == 0" class="search">Nenhum resultado encontrado</h4>
+		<ion-item *ngFor="let category of searchCategories">
+
+			<ion-card (click)="openScript(script.Id)" *ngFor="let script of favorites[category] | slice:0:4;">
+				<ion-card-header>
+					{{script.Title}}
+				</ion-card-header>
+				<ion-card-content text-wrap>
+					{{script.Abstract}}
+				</ion-card-content>
+			</ion-card>
+		</ion-item>
+	</ion-col>
+</ion-content>

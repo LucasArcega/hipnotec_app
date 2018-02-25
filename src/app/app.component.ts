@@ -3,7 +3,7 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
-
+import { FavoritesPage } from '../pages/favorites/favorites';
 import { ListPage } from '../pages/list/list';
 import { RestProvider } from '../providers/rest/rest';
 @Component({
@@ -15,6 +15,7 @@ export class MyApp {
 	rootPage: any = HomePage;
 	categorias: Array<{ Id: number, title: string, Subtitulo: string, Enum: any }>
 	pages: Array<{ title: string, component: any }>;
+	favoritesPage :any;
 	categoriasRest: any;
 	showCategories: boolean;
 	constructor(public platform: Platform,
@@ -29,50 +30,50 @@ export class MyApp {
 			title: "Técnicas",
 			Subtitulo: "",
 			Enum: ""
-		},		
-		{
-			Id: 3,
-			title: "Linguagem",
-			Subtitulo: "",
-			Enum: ""
-		},
-		{
-			Id: 4,
-			title: "Métodos",
-			Subtitulo: "",
-			Enum: ""
-		},
-		{
-			Id: 5,
-			title: "Induções",
-			Subtitulo: "",
-			Enum: ""
-		},
-		{
-			Id: 6,
-			title: "Aplicações",
-			Subtitulo: "",
-			Enum: ""
-		},
-		{
-			Id: 7,
-			title: "Metáforas",
-			Subtitulo: "",
-			Enum: ""
-		},
-		{
-			Id: 8,
-			title: "Hipnose",
-			Subtitulo: "",
-			Enum: ""
-		}];
+			},		
+			{
+				Id: 3,
+				title: "Linguagem",
+				Subtitulo: "",
+				Enum: ""
+			},
+			{
+				Id: 4,
+				title: "Métodos",
+				Subtitulo: "",
+				Enum: ""
+			},
+			{
+				Id: 5,
+				title: "Induções",
+				Subtitulo: "",
+				Enum: ""
+			},
+			{
+				Id: 6,
+				title: "Aplicações",
+				Subtitulo: "",
+				Enum: ""
+			},
+			{
+				Id: 7,
+				title: "Metáforas",
+				Subtitulo: "",
+				Enum: ""
+			},
+			{
+				Id: 8,
+				title: "Hipnose",
+				Subtitulo: "",
+				Enum: ""
+			}];
 
 		// used for an example of ngFor and navigation
 		this.pages = [
 			{ title: 'Home', component: HomePage },
 			{ title: 'List', component: ListPage }
 		];
-
+		this.favoritesPage = FavoritesPage;
 	}
 
 	getAll() {
@@ -96,10 +97,11 @@ export class MyApp {
 		this.nav.setRoot(HomePage);
 	}
 
+	goFavorites() {
+		this.nav.push(FavoritesPage);
+	}
 
 	openPage(page) {
-		// Reset the content nav to have just this page
-		// we wouldn't want the back button to show in this scenario
 		this.nav.setRoot(page.component);
 	}
 }
